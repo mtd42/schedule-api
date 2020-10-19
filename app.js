@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cron = require('node-cron');
 const fs = require('fs');
+const favicon = require('serve-favicon');
 
 const indexRouter = require('./back/routes/index');
 const scheduleRouter = require('./back/routes/schedule');
@@ -12,6 +13,7 @@ const { espiSchedule } = require('./back/components/scheduler/scheduler');
 
 const app = express();
 
+app.use(favicon(path.join(__dirname,'/front/public/images/favicon.ico')));
 app.set('views', path.join(__dirname, '/front/views'));
 app.set('view engine', 'hbs');
 
