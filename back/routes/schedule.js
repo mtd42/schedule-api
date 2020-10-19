@@ -1,5 +1,5 @@
 const express = require('express');
-const { espiSchedule } = require('../scheduler/scheduler');
+const { espiSchedule } = require('../components/scheduler/scheduler');
 const router = express.Router();
 
 router.get('/', async (req, res, _next) => {
