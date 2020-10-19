@@ -6,24 +6,29 @@ const logger = require('morgan');
 const cron = require('node-cron');
 const fs = require('fs');
 
-const indexRouter = require('./routes/index');
-const scheduleRouter = require('./routes/schedule');
-const { espiSchedule } = require('./scheduler/scheduler');
+const indexRouter = require('./back/routes/index');
+const scheduleRouter = require('./back/routes/schedule');
+const { espiSchedule } = require('./back/components/scheduler/scheduler');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/front/views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/front/public')));
+
+app.use(function(req, res, next) {
+  req.headers['if-none-match'] = 'no-match-for-this';
+  next();    
+});
 
 cron.schedule('* * * * *', async () => {
   const scheduleData = await espiSchedule('11/08/2020');
-  fs.writeFileSync('./database/cron-schedule.json', scheduleData);
+  fs.writeFileSync('./back/database/cron-schedule.json', scheduleData);
 });
 
 app.use('/', indexRouter);
