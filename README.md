@@ -1,6 +1,6 @@
 # Open API Epsi Schedule
 
-This is an open api made by `Mathieu Dorville`, created in order to manage the epsi schedule.
+This is an open api made by `Mathieu Dorville` created in order to manage the epsi schedule.
 
 ## 1. Endpoints
 
