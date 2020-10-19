@@ -19,6 +19,7 @@
         "indent": ["error", 4],
         "camelcase": "off",
         "object-curly-spacing":"off",
-        "max-len": "off"
+        "max-len": "off",
+        "new-cap": "off"
     }
 }
