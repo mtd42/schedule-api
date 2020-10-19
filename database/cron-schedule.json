@@ -1,0 +1,107 @@
+{
+  "lundi": [{
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "ARCHITECTURE PROCESSUS MÉT-DT",
+    "heure": "09:00 - 11:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "ARCHITECTURE PROCESSUS MÉT-TI",
+    "heure": "11:00 - 13:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "FAURE FRÉDÉRIC",
+    "nom_cours": "LEAN MANAGEMENT-CV",
+    "heure": "14:00 - 16:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "FAURE FRÉDÉRIC",
+    "nom_cours": "LEAN MANAGEMENT-CV",
+    "heure": "16:00 - 18:00",
+    "salle": "F205(Faure)"
+  }],
+  "mardi": [{
+    "nom_prof": "PENARANDA XAVIER",
+    "nom_cours": "GOUVERNANCE / PERF D'UN SI",
+    "heure": "10:00 - 12:00",
+    "salle": "F203(Faure)"
+  }, {
+    "nom_prof": "PENARANDA XAVIER",
+    "nom_cours": "GOUVERNANCE / PERF D'UN SI",
+    "heure": "12:00 - 13:00",
+    "salle": "F203(Faure)"
+  }, {
+    "nom_prof": "MIGNARD JESSICA",
+    "nom_cours": "GESTION CONTRATS DE SERVICES",
+    "heure": "14:00 - 16:00",
+    "salle": "F204(Faure)"
+  }, {
+    "nom_prof": "MIGNARD JESSICA",
+    "nom_cours": "GESTION CONTRATS DE SERVICES",
+    "heure": "16:00 - 18:00",
+    "salle": "F204(Faure)"
+  }],
+  "mercredi": [{
+    "nom_prof": "PEYNEAU ANGÈLE",
+    "nom_cours": "GREEN IT & RSE",
+    "heure": "09:00 - 11:00",
+    "salle": "F202(Faure)"
+  }, {
+    "nom_prof": "PEYNEAU ANGÈLE",
+    "nom_cours": "GREEN IT & RSE",
+    "heure": "11:00 - 13:00",
+    "salle": "F202(Faure)"
+  }, {
+    "nom_prof": "MEYER THIERRY",
+    "nom_cours": "SÉCURITÉ INFORMATION/ÉCHANGES",
+    "heure": "14:00 - 16:00",
+    "salle": "F202(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "GESTION CONTRATS DE SERV-CV",
+    "heure": "16:00 - 18:00",
+    "salle": "F202(Faure)"
+  }],
+  "jeudi": [{
+    "nom_prof": "PEYNEAU ANGÈLE",
+    "nom_cours": "ATEL : GESTION COMPÉTENCES RH",
+    "heure": "09:00 - 11:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "PEYNEAU ANGÈLE",
+    "nom_cours": "ATEL : GESTION COMPÉTENCES RH",
+    "heure": "11:00 - 13:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "MSPR OPTIM/AMÉL SYS INF EXIST",
+    "heure": "14:00 - 16:00",
+    "salle": "F205(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "MSPR CONC/MODEL SOLUTION BI",
+    "heure": "16:00 - 18:00",
+    "salle": "F205(Faure)"
+  }],
+  "vendredi": [{
+    "nom_prof": "TOIX FLORIAN",
+    "nom_cours": "ARCHITECTURE PROCESSUS MÉT-CV",
+    "heure": "09:00 - 11:00",
+    "salle": "F204(Faure)"
+  }, {
+    "nom_prof": "TOIX FLORIAN",
+    "nom_cours": "ARCHITECTURE PROCESSUS MÉT-CV",
+    "heure": "11:00 - 13:00",
+    "salle": "F204(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "LEAN MANAGEMENT-DT",
+    "heure": "14:00 - 16:00",
+    "salle": "F204(Faure)"
+  }, {
+    "nom_prof": "PAS DE PROF",
+    "nom_cours": "LEAN MANAGEMENT-DT",
+    "heure": "16:00 - 18:00",
+    "salle": "F204(Faure)"
+  }]
+}
