@@ -10,6 +10,7 @@ router.get('/', async (req, res, _next) => {
     res.status(200).json(resource);
   } catch(e) {
     console.error(e);
+    res.status(500).json({error: e});
   }
 });
 

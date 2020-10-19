@@ -1,12 +1,11 @@
 const jsdom = require("jsdom");
 const { default: Axios } = require('axios');
-const fs = require('fs');
 const beautify = require('js-beautify').js;
 
+// Toto refacto
 const espiSchedule = async (date) => {
     const today_date = new Date(new Date() - 3600 * 1000 * 3).toISOString().split('T')[0].split('-').reverse().join('/');
     const valid_date = date === '' ? today_date : date;
-    console.log(valid_date)
     const html = await Axios.get(`https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=mathieu.dorville&date=${valid_date}`);
   
     const dom = new jsdom.JSDOM(html.data);

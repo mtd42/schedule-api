@@ -10,7 +10,7 @@ const indexRouter = require('./routes/index');
 const scheduleRouter = require('./routes/schedule');
 const { espiSchedule } = require('./scheduler/scheduler');
 
-var app = express();
+const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -29,11 +29,11 @@ cron.schedule('* * * * *', async () => {
 app.use('/', indexRouter);
 app.use('/schedule', scheduleRouter);
 
-app.use((req, res, next) => {
+app.use((_req, _res, next) => {
   next(createError(404));
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
