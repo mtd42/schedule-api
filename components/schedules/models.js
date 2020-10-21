@@ -1,8 +1,8 @@
-const jsdom = require('jsdom');
-const { default: Axios } = require('axios');
-const beautify = require('js-beautify').js;
+import jsdom from 'jsdom';
+import Axios from 'axios';
+import beautify from 'js-beautify';
 
-const scheduleComponent = async (date) => {
+const fetchScheduleData = async (date) => {
     const today_date = new Date(new Date() - 3600 * 1000 * 3).toISOString().split('T')[0].split('-').reverse().join('/');
     const valid_date = date === '' ? today_date : date;
     const html = await Axios.get(`https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=mathieu.dorville&date=${valid_date}`);
@@ -67,6 +67,6 @@ const scheduleComponent = async (date) => {
     return scheduleData;
 };
 
-module.exports = {
-    scheduleComponent,
+export {
+    fetchScheduleData,
 };
