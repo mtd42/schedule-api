@@ -1,4 +1,4 @@
-name: Node.js CI
+name: schedule-api
 
 on: [push]
 
