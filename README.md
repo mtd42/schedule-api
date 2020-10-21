@@ -1,3 +1,25 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
 # Open API Epsi Schedule
 
 This is an open api made by `Mathieu Dorville` created in order to manage the epsi schedule.
@@ -22,3 +44,5 @@ This is an open api made by `Mathieu Dorville` created in order to manage the ep
 | ---- | -------- | ------ | ---------- | ------------------------------------------------------------ |
 | date | yes      | string | 11/01/2020 | mm/dd/yyy                                                    |
 | day  | no       | string | lundi      | Possible values :<br />- lundi<br />- mardi<br />- mercredi<br />- jeudi<br />- vendredi |
+
+
