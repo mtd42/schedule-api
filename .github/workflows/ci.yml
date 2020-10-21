@@ -1,14 +1,30 @@
+name: schedule-api pipeline
+
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request. 
   push:
     branches:
       - master
-  pull_request:
-      types: [opened, synchronize, reopened]
-name: Main Workflow
+
 jobs:
-  sonarcloud:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+      env:
+        CI: true
+      
+  sonar:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
