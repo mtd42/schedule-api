@@ -1,6 +1,9 @@
 name: schedule-api
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -20,6 +23,7 @@ jobs:
     - run: npm install
       env:
         CI: true
+      
   sonar:
     runs-on: ubuntu-latest
     steps:
