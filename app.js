@@ -1,50 +1,38 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const cron = require('node-cron');
-const fs = require('fs');
-const favicon = require('serve-favicon');
+import express from 'express';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import cron from 'node-cron';
+import fs from 'fs';
 
-const indexRouter = require('./back/routes/index');
-const scheduleRouter = require('./back/routes/schedule');
-const { scheduleComponent } = require('./back/components/scheduleComponent/scheduleComponent');
+import * as server from './bin/server';
+import { router } from './bin/router';
+import { fetchScheduleData } from './components/schedules/models';
 
 const app = express();
+const log = morgan('dev');
 
-app.use(favicon(path.join(__dirname, '/front/public/images/favicon.ico')));
-app.set('views', path.join(__dirname, '/front/views'));
-app.set('view engine', 'hbs');
+server.run(app);
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '/front/public')));
+app.disable('etag');
+app.disable('x-powered-by');
 
-app.use(function(req, _res, next) {
-    req.headers['if-none-match'] = 'no-match-for-this';
-    next();
-});
+app.use(bodyParser.urlencoded({
+    extended: true,
+    mergeParams: true,
+}));
+
+app.use(bodyParser.json());
+
+app.use(log);
 
 cron.schedule('* * * * *', async () => {
-    const scheduleData = await scheduleComponent('11/01/2020');
-    fs.writeFileSync('./back/database/cron-schedule.json', scheduleData);
+    const scheduleData = await fetchScheduleData('11/01/2020');
+    fs.writeFileSync('./database/cron-schedule.json', scheduleData);
 });
 
-app.use('/', indexRouter);
-app.use('/schedule', scheduleRouter);
+router(app);
 
-app.use((_req, _res, next) => {
-    next(createError(404));
+app.use((req, res) => {
+    res.status(404).json('Url not found');
+    res.end();
 });
-
-app.use((err, req, res, _next) => {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-    res.status(err.status || 500);
-    res.render('error');
-});
-
-module.exports = app;
