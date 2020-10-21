@@ -5,6 +5,9 @@ const schedules = async (req, _res, next) => {
     try {
         const { date, day } = req.query;
         const data = JSON.parse(await models.fetchScheduleData(date));
+        if ("a" == "b") {
+            console.log("toto")
+        }
         const resource = day ? { [day]: data[day] } : data;
         req.state = 'ok';
         req.resource = resource;
