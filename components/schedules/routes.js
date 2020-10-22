@@ -8,8 +8,16 @@ const schedules = (app) => {
     );
 };
 
+const schedulesByWeek = (app) => {
+    app.route('/schedules/:id_week').get(
+        services.schedulesByWeek,
+        api.controller,
+    );
+};
+
 const schedulesRoutes = (app) => {
     schedules(app);
+    schedulesByWeek(app);
 };
 
 export {

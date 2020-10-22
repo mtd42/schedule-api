@@ -3,10 +3,11 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cron from 'node-cron';
 import fs from 'fs';
+import beautify from 'js-beautify';
 
 import * as server from './bin/server';
 import { router } from './bin/router';
-import { fetchScheduleData } from './components/schedules/models';
+import { scheduleWeeks, scheduleDocument } from './components/schedules/models';
 
 const app = express();
 const log = morgan('dev');
@@ -26,8 +27,13 @@ app.use(bodyParser.json());
 app.use(log);
 
 cron.schedule('* * * * *', async () => {
-    const scheduleData = await fetchScheduleData('11/01/2020');
-    fs.writeFileSync('./database/cron-schedule.json', scheduleData);
+    const scheduleWeeksData = await scheduleWeeks();
+    fs.writeFileSync('./database/schedule-weeks.json', beautify(JSON.stringify(scheduleWeeksData), { indent_size: 2, space_in_empty_paren: true }));
+});
+
+cron.schedule('* * * * *', async () => {
+    const scheduleDocumentData = await scheduleDocument();
+    fs.writeFileSync('./database/schedule-document.json', beautify(JSON.stringify(scheduleDocumentData), { indent_size: 2, space_in_empty_paren: true }));
 });
 
 router(app);
