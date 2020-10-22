@@ -1,10 +1,16 @@
 import * as infos from '../../package.json';
+import moment from 'moment';
 
 const fetchWelcomeData = () => {
     const obj = {
         message: 'Welcome to schedule-api',
         version: infos.default.version,
-        date: new Date(new Date() - 3600 * 1000 * 3).toISOString().split('T')[0].split('-').reverse().join('/'),
+        author: infos.default.author,
+        homepage: infos.default.homepage,
+        date: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        endpoints: {
+            schedules: 'http://localhost:3000/schedules',
+        },
     };
     return obj;
 };
