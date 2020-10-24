@@ -8,19 +8,17 @@ This is an open api made by `Mathieu Dorville` created in order to manage the ep
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
 
-## 1. Endpoints
 
-### 1.1 schedule
+## 1. Demo
 
-| Method | Endpoint  | Example                             |
-| ------ | --------- | ----------------------------------- |
-| GET    | /schedule | /schedule?date=11/01/2020&day=lundi |
+https://epsi.schedule.api.mtd42.fr
 
-- Query parameters
+>  Note: The API show my schedule data, multi-user is not implemented yet.
 
-| Name | Required | Type   | Example    | Format                                                       |
-| ---- | -------- | ------ | ---------- | ------------------------------------------------------------ |
-| date | yes      | string | 11/01/2020 | mm/dd/yyy                                                    |
-| day  | no       | string | lundi      | Possible values :<br />- lundi<br />- mardi<br />- mercredi<br />- jeudi<br />- vendredi |
+## 2. Endpoints
 
+### 2.1 schedule
 
+| Method | Endpoint  | Example   |
+| ------ | --------- | --------- |
+| GET    | /schedule | /schedule |
