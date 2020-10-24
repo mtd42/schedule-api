@@ -9,7 +9,7 @@ const fetchWelcomeData = () => {
         homepage: infos.default.homepage,
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
         endpoints: {
-            schedules: 'http://localhost:3000/schedules',
+            schedules: `${process.env.API_URL}/schedules`,
         },
     };
     return obj;

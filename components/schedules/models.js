@@ -2,7 +2,6 @@ import jsdom from 'jsdom';
 import Axios from 'axios';
 
 import moment from 'moment';
-import jsonSchedule from '../../database/schedule-weeks.json';
 
 const fetchScheduleData = async (date) => {
     const today_date = new Date(new Date() - 3600 * 1000 * 3).toISOString().split('T')[0].split('-').reverse().join('/');
@@ -69,11 +68,11 @@ const fetchScheduleData = async (date) => {
     return emploi_du_temp.length ? test : {};
 };
 
-async function asyncForEach(array, callback) {
+const asyncForEach = async (array, callback) => {
     for (let index = 0; index < array.length; index++) {
-      await callback(array[index], index, array);
+        await callback(array[index], index, array);
     }
-}
+};
 
 const findMondays = (nbOfMondays) => {
     const start = moment();
@@ -110,7 +109,7 @@ const findScheduleWeeks = async () => {
 const scheduleWeeks = async () => {
     const resource = await findScheduleWeeks();
     const data = resource.map((e, i) => {
-        return {week: e, url: `http://localhost:3000/schedules/${i}`};
+        return {week: e, url: `${process.env.API_URL}/schedules/${i}`};
     });
     return Object.assign({}, {count: data.length, results: data});
 };
