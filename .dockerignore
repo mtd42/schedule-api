@@ -1,0 +1,13 @@
+node_modules
+sonar-project.properties
+README.md
+.eslintrc.json
+.github
+LICENSE
+.env
+database
+.git
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-composer_dev.yml
