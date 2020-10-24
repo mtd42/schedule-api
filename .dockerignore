@@ -10,4 +10,4 @@ database
 .dockerignore
 Dockerfile
 docker-compose.yml
-docker-composer_dev.yml
+docker-composer-dev.yml
