@@ -5,7 +5,7 @@ const fetchWelcomeData = (locale) => {
     const traduction = {
         message: {
             ['en-US']: 'Welcome to the OPEN API epsi-schedule-api',
-            ['fr']: 'Bienvenue sur l\'open api espi-schedule-api',
+            ['fr-FR']: 'Bienvenue sur l\'open api espi-schedule-api',
         },
     };
     const obj = {

@@ -3,7 +3,7 @@ import * as api from '../../bin/library.js';
 
 const welcome = async (req, res, next) => {
     try {
-        const locale = req.headers['accept-language'] ? req.headers['accept-language'].split(',')[0] : 'en-US';
+        const locale = req.headers['accept-language'] ? req.headers['accept-language'].split(',')[1].split(';')[0]: 'en-US';
         console.log(locale);
         const data = models.fetchWelcomeData(locale);
         req.state = 'ok';
