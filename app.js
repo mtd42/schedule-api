@@ -7,7 +7,7 @@ import beautify from 'js-beautify';
 
 import * as server from './bin/server';
 import { router } from './bin/router';
-import { scheduleWeeks, scheduleDocument } from './components/schedules/models';
+import { scheduleWeeks } from './components/schedules/models';
 
 const app = express();
 const log = morgan('dev');
@@ -26,13 +26,13 @@ app.use(bodyParser.json());
 
 app.use(log);
 
-cron.schedule('* * * * *', async () => {
-    const scheduleWeeksData = await scheduleWeeks();
+cron.schedule('*/2 * * * *', async () => {
+    const scheduleWeeksData = await scheduleWeeks(true);
     fs.writeFileSync('./database/schedule-weeks.json', beautify(JSON.stringify(scheduleWeeksData), { indent_size: 2, space_in_empty_paren: true }));
 });
 
-cron.schedule('* * * * *', async () => {
-    const scheduleDocumentData = await scheduleDocument();
+cron.schedule('*/2 * * * *', async () => {
+    const scheduleDocumentData = await scheduleWeeks(false);
     fs.writeFileSync('./database/schedule-document.json', beautify(JSON.stringify(scheduleDocumentData), { indent_size: 2, space_in_empty_paren: true }));
 });
 

@@ -6,6 +6,7 @@ import scheduleDocument from '../../database/schedule-document.json';
 
 const schedules = async (req, res, next) => {
     try {
+        // const scheduleWeeksData = await models.scheduleWeeks(true);
         const scheduleWeeksData = scheduleWeeks;
         req.state = 'ok';
         req.resource = scheduleWeeksData;
@@ -18,9 +19,10 @@ const schedules = async (req, res, next) => {
 const schedulesByWeek = async (req, res, next) => {
     try {
         const { id_week } = req.params;
-        const scheduleDocumentData = scheduleDocument[id_week];
+        // const scheduleDocumentData = await models.scheduleWeeks(false);
+        const scheduleDocumentData = scheduleDocument;
         req.state = 'ok';
-        req.resource = scheduleDocumentData;
+        req.resource = scheduleDocumentData[(parseInt(id_week, 10) - 1).toString()];
     } catch (e) {
         api.handle_errors(req, err);
     }
