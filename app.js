@@ -1,13 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import cron from 'node-cron';
-import fs from 'fs';
-import beautify from 'js-beautify';
+// import cron from 'node-cron';
+// import fs from 'fs';
+// import beautify from 'js-beautify';
 
 import * as server from './bin/server';
 import { router } from './bin/router';
-import { scheduleWeeks } from './components/schedules/models';
+// import { scheduleWeeks } from './components/schedules/models';
 
 const app = express();
 const log = morgan('dev');
@@ -26,15 +26,15 @@ app.use(bodyParser.json());
 
 app.use(log);
 
-cron.schedule('*/2 * * * *', async () => {
-    const scheduleWeeksData = await scheduleWeeks(true);
-    fs.writeFileSync('./database/schedule-weeks.json', beautify(JSON.stringify(scheduleWeeksData), { indent_size: 2, space_in_empty_paren: true }));
-});
+// cron.schedule('*/4 * * * *', async () => {
+//     const scheduleWeeksData = await scheduleWeeks(true);
+//     fs.writeFileSync('./database/schedule-weeks.json', beautify(JSON.stringify(scheduleWeeksData), { indent_size: 2, space_in_empty_paren: true }));
+// });
 
-cron.schedule('*/2 * * * *', async () => {
-    const scheduleDocumentData = await scheduleWeeks(false);
-    fs.writeFileSync('./database/schedule-document.json', beautify(JSON.stringify(scheduleDocumentData), { indent_size: 2, space_in_empty_paren: true }));
-});
+// cron.schedule('*/2 * * * *', async () => {
+//     const scheduleDocumentData = await scheduleWeeks(false);
+//     fs.writeFileSync('./database/schedule-document.json', beautify(JSON.stringify(scheduleDocumentData), { indent_size: 2, space_in_empty_paren: true }));
+// });
 
 router(app);
 
