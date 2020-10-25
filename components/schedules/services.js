@@ -1,4 +1,4 @@
-// import * as models from './models.js';
+import * as models from './models.js';
 import * as api from '../../bin/library.js';
 // import scheduleWeeks from '../../database/schedule-weeks.json';
 // import scheduleDocument from '../../database/schedule-document.json';
@@ -6,7 +6,7 @@ import * as api from '../../bin/library.js';
 
 const schedules = async (req, res, next) => {
     try {
-        // const scheduleWeeksData = await models.scheduleWeeks(true);
+        const scheduleWeeksData = await models.scheduleWeeks(true);
         // const scheduleWeeksData = scheduleWeeks;
         req.state = 'ok';
         req.resource = scheduleWeeksData;
