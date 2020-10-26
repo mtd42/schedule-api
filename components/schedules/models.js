@@ -87,6 +87,7 @@ const findMondays = async (nbOfMondays) => {
 
 const scheduleWeeks = async (filter) => {
     const mondays = await findMondays(7);
+    mondays.unshift(moment().format('L'));
     const resource = await Promise.all(mondays.map((monday) => fetchScheduleData(monday)));
     if (filter) {
         const data = resource.map((e, i) => {
