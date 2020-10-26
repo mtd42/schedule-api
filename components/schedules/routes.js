@@ -2,15 +2,15 @@ import * as api from '../../bin/controller';
 import * as services from './services';
 
 const schedules = (app) => {
-    app.route('/schedules').get(
-        services.schedules,
+    app.route('/schedules/weeks').get(
+        services.getSchedulesByWeeks,
         api.controller,
     );
 };
 
 const schedulesByWeek = (app) => {
-    app.route('/schedules/:id_week').get(
-        services.schedulesByWeek,
+    app.route('/schedules/weeks/:idWeek').get(
+        services.getSchedulesByIdWeek,
         api.controller,
     );
 };

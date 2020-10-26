@@ -3,12 +3,14 @@ import moment from 'moment';
 
 const fetchWelcomeData = () => {
     const obj = {
-        message: 'Welcome to the OPEN API for the espi-schedule',
+        message: 'Welcome to the OPEN API for the epsi-schedule',
         version: infos.default.version,
         author: infos.default.author,
         github: infos.default.homepage,
         endpoints: {
-            schedules: `${process.env.API_URL}/schedules`,
+            schedules: {
+                weeks: `${process.env.API_URL}/schedules/weeks`,
+            },
         },
         date: moment().format('LLL'),
     };
