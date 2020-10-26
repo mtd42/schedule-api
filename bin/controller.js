@@ -1,5 +1,16 @@
+import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
+
 const internal = ({ req, res }) => {
-    return res.status(500).json(req.resource);
+    const internalError = Object.assign({
+        apiErrorMessage: req.resource,
+        apiErrorUrl: `${process.env.API_URL}${req.url}`,
+        metadata: {
+            date: moment().format('LLL'),
+            requestId: uuidv4(),
+        },
+    });
+    return res.status(500).json(internalError);
 };
 
 const ok = ({req, res}) => {
@@ -14,6 +25,18 @@ const created = ({req, res}) => {
     return res.status(201).json(req.resource);
 };
 
+const badParams = ({ req, res }) => {
+    const paramsError = Object.assign({
+        apiErrorMessage: req.resource,
+        apiErrorUrl: `${process.env.API_URL}${req.url}`,
+        metadata: {
+            date: moment().format('LLL'),
+            requestId: uuidv4(),
+        },
+    });
+    return res.status(400).json(paramsError);
+};
+
 const controller = (req, res, next) => {
     const data = { ...req, ...res };
     const request = {
@@ -22,6 +45,7 @@ const controller = (req, res, next) => {
         internal: () => internal(data),
         conflict: () => conflict(data),
         created: () => created(data),
+        badParams: () => badParams(data),
     };
     request[req.state]();
 };

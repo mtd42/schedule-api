@@ -6,9 +6,8 @@ const welcome = async (req, res, next) => {
         const data = models.fetchWelcomeData();
         req.state = 'ok';
         req.resource = Object.assign({}, data);
-    } catch (e) {
-        console.error(e);
-        api.handle_errors(req, err);
+    } catch (err) {
+        api.handleError(req, err);
     }
     next();
 };

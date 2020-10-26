@@ -1,35 +1,53 @@
 import * as models from './models.js';
 import * as api from '../../bin/library.js';
-// import scheduleWeeks from '../../database/schedule-weeks.json';
-// import scheduleDocument from '../../database/schedule-document.json';
+import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
-
-const schedules = async (req, res, next) => {
+const getSchedulesByWeeks = (req, res, next) => {
     try {
-        const scheduleWeeksData = await models.scheduleWeeks(true);
-        // const scheduleWeeksData = scheduleWeeks;
+        const scheduleWeeksData = models.scheduleWeeks();
         req.state = 'ok';
-        req.resource = scheduleWeeksData;
-    } catch (e) {
-        api.handle_errors(req, err);
+        req.resource = Object.assign({}, {
+            weeks: scheduleWeeksData,
+            links: {
+                prev: process.env.API_URL,
+                self: `${process.env.API_URL}${req.url}`,
+                method: req.method.toLowerCase(),
+            },
+            metadata: {
+                date: moment().format('LLL'),
+                requestId: uuidv4(),
+            },
+        });
+    } catch (err) {
+        api.handleError(req, err);
     }
     next();
 };
 
-const schedulesByWeek = async (req, res, next) => {
+const getSchedulesByIdWeek = async (req, res, next) => {
     try {
-        const { id_week } = req.params;
-        const scheduleDocumentData = await models.scheduleWeeks(false);
-        // const scheduleDocumentData = scheduleDocument;
+        const { idWeek } = req.params;
+        const scheduleDocumentData = await models.findScheduleByIdWeek(idWeek);
         req.state = 'ok';
-        req.resource = scheduleDocumentData[(parseInt(id_week, 10) - 1).toString()];
-    } catch (e) {
-        api.handle_errors(req, err);
+        req.resource = Object.assign({}, {
+            ...scheduleDocumentData,
+            links: {
+                self: `${process.env.API_URL}${req.url}`,
+                method: req.method.toLowerCase(),
+            },
+            metadata: {
+                date: moment().format('LLL'),
+                requestId: uuidv4(),
+            },
+        });
+    } catch (err) {
+        api.handleError(req, err);
     }
     next();
 };
 
 export {
-    schedules,
-    schedulesByWeek,
+    getSchedulesByWeeks,
+    getSchedulesByIdWeek,
 };
