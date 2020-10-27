@@ -14,11 +14,3 @@ This is an open api made by `Mathieu Dorville` created in order to manage the ep
 https://epsi.schedule.api.mtd42.fr
 
 >  Note: The API show my schedule data, multi-user is not implemented yet.
-
-## 2. Endpoints
-
-### 2.1 schedule
-
-| Method | Endpoint  | Example   |
-| ------ | --------- | --------- |
-| GET    | /schedule | /schedule |
