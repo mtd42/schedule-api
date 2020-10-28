@@ -3,8 +3,13 @@ import moment from 'moment';
 
 const internal = ({ req, res }) => {
     const internalError = Object.assign({
-        apiErrorMessage: req.resource,
-        apiErrorUrl: `${process.env.API_URL}${req.url}`,
+        resource: {
+            message: req.resource,
+            code: 500,
+        },
+        links: {
+            self: `${process.env.API_URL}${req.url}`,
+        },
         metadata: {
             date: moment().format('LLL'),
             requestId: uuidv4(),
@@ -14,7 +19,18 @@ const internal = ({ req, res }) => {
 };
 
 const ok = ({req, res}) => {
-    return res.status(200).json(req.resource);
+    const okResponse = Object.assign({}, {
+        resource: req.resource,
+        links: {
+            prev: process.env.API_URL,
+            self: `${process.env.API_URL}${req.url}`,
+        },
+        metadata: {
+            date: moment().format('LLL'),
+            requestId: uuidv4(),
+        },
+    });
+    return res.status(200).json(okResponse);
 };
 
 const conflict = ({req, res}) => {
@@ -27,8 +43,13 @@ const created = ({req, res}) => {
 
 const badParams = ({ req, res }) => {
     const paramsError = Object.assign({
-        apiErrorMessage: req.resource,
-        apiErrorUrl: `${process.env.API_URL}${req.url}`,
+        resource: {
+            message: req.resource,
+            code: 400,
+        },
+        links: {
+            self: `${process.env.API_URL}${req.url}`,
+        },
         metadata: {
             date: moment().format('LLL'),
             requestId: uuidv4(),
