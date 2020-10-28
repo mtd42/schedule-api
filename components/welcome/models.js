@@ -1,5 +1,4 @@
 import * as infos from '../../package.json';
-import moment from 'moment';
 
 const fetchWelcomeData = () => {
     const obj = {
@@ -11,8 +10,7 @@ const fetchWelcomeData = () => {
             schedules: {
                 weeks: `${process.env.API_URL}/schedules/weeks`,
             },
-        },
-        date: moment().format('LLL'),
+        }
     };
     return obj;
 };
