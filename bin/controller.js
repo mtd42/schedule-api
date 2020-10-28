@@ -4,7 +4,7 @@ import moment from 'moment';
 const internal = ({ req, res }) => {
     const internalError = Object.assign({
         resource: {
-            message: req.resource,
+            message: 'Internal server error. Please check the logs.',
             code: 500,
         },
         links: {
@@ -22,7 +22,6 @@ const ok = ({req, res}) => {
     const okResponse = Object.assign({}, {
         resource: req.resource,
         links: {
-            prev: process.env.API_URL,
             self: `${process.env.API_URL}${req.url}`,
         },
         metadata: {
