@@ -10,7 +10,7 @@ const fetchWelcomeData = () => {
             schedules: {
                 weeks: `${process.env.API_URL}/schedules/weeks`,
             },
-        }
+        },
     };
     return obj;
 };
