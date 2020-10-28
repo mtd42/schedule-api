@@ -102,7 +102,7 @@ const scheduleWeeks = () => {
             return {
                 id: i + 1,
                 month: moment.months((moment(mondays[i], 'MM/DD/YYYY').month())),
-                startDate: mondays[i],
+                startDate: moment(mondays[i], 'MM/DD/YYYY').startOf('week').add(1, 'd').format('L'),
                 endDate: moment(mondays[i], 'MM/DD/YYYY').add(4, 'days').format('L'),
                 links: {
                     rel: `${process.env.API_URL}/schedules/weeks`,
