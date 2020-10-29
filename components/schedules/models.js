@@ -64,7 +64,7 @@ const fetchScheduleData = async (date) => {
         monday: days[0],
         tuesday: days[1],
         wednesday: days[2],
-        thurday: days[3],
+        thursday: days[3],
         friday: days[4],
     };
 
@@ -72,7 +72,7 @@ const fetchScheduleData = async (date) => {
         monday: [],
         tuesday: [],
         wednesday: [],
-        thurday: [],
+        thursday: [],
         friday: [],
     };
 
