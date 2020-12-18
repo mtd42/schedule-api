@@ -1,14 +1,11 @@
 import jsdom from 'jsdom';
-import Axios from 'axios';
 import moment from 'moment';
-import { messageError } from '../../bin/library';
+// import { messageError } from '../../bin/library';
 
 const fetchScheduleData = async (date) => {
-    const { data } = await Axios.get(`https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=mathieu.dorville&date=${date}`);
-    const dom = new jsdom.JSDOM(data);
-    if (data.length === 328) {
-        throw messageError('badParams', 'Oops ! Il y a eu une erreur lors de la récupération des données, veuillez relancer la requête.');
-    }
+    const dom = await jsdom.JSDOM.fromURL(`https://edtmobiliteng.wigorservices.net//WebPsDyn.aspx?action=posEDTBEECOME&serverid=C&Tel=mathieu.dorville&date=${date}`, {
+        includeNodeLocations: true,
+    });
 
     const dom_profs = dom.window.document.getElementsByClassName('TCProf');
     const arr_profs = Object.values(dom_profs);
