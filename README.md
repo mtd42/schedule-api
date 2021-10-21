@@ -1,6 +1,6 @@
 # Open API Epsi Schedule
 
-This is an open api made by `Mathieu Dorville` created in order to manage the epsi schedule.
+This is an open api created in order to manage the epsi schedule.
 
 ![schedule-api](https://github.com/mtd42/schedule-api/workflows/schedule-api/badge.svg?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
