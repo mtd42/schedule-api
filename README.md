@@ -7,10 +7,3 @@ This is an open api created in order to manage the epsi schedule.
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=ncloc)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=mtd42_schedule-api&metric=code_smells)](https://sonarcloud.io/dashboard?id=mtd42_schedule-api)
-
-
-## 1. Demo
-
-https://epsi.schedule.api.mtd42.fr
-
->  Note: The API show my schedule data, multi-user is not implemented yet.
